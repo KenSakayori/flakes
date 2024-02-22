@@ -48,6 +48,12 @@
                   "mylib-0.1.0" = "sha256-jkJk5nGTGfQoVhOHo5Zx9Ha19iA7OoV2b6mq4Fw1WA4=";
                 };
               };
+              buildInputs = [ pkgs.makeWrapper ];
+              # The CI for hoice uses z3 4.8.17 so I'm using pkgs.z3_4_8 (which is 4.8.17)
+              postFixup = ''
+                wrapProgram $out/bin/hoice \
+                --set PATH ${pkgs.lib.makeBinPath [ pkgs.z3_4_8 ]}
+                '';
               # Currently cargo test fails
               doCheck = false;
               #nativeCheckInputs = [ pkgs.z3 ];
