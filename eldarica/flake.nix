@@ -32,7 +32,7 @@
               # > It's also far from trivial to calculate this hash programmatically,
               # > strictly from the project files. The proposed solution is trust on first use
               # > (aka let a build fail the first time and use the hash that Nix prints).
-              depsSha256 = "sha256-LxoZZ+3oKA2/UinASJtHH5INLGeT9SkbwUI7+CEa+Z4=";
+              depsSha256 = "sha256-/zM7s1txEc0eM9RMisLTP+Qm8X5cdOgOI9X9G0oln4E=";
               buildInputs = [ pkgs.makeWrapper ];
               buildPhase = ''
               sbt assembly
@@ -46,7 +46,7 @@
               cp -r target/scala-2.* $out/bin/target
               cp eld eld-client eldEnv $out/bin
               wrapProgram $out/bin/eld \
-              --set PATH ${pkgs.lib.makeBinPath [ pkgs.coreutils pkgs.jdk21 ]}
+              --set PATH ${pkgs.lib.makeBinPath [ pkgs.coreutils pkgs.jre_minimal ]}
               '';
             };
         in
