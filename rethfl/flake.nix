@@ -1,10 +1,11 @@
 {
-  # TODO: inputs should include Eldarica (and maybe PCSat)
+  # TODO: maybe add PCSat
   inputs = {
     opam-nix.url = "github:tweag/opam-nix";
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.follows = "opam-nix/nixpkgs";
     hoice.url = "github:/KenSakayori/flakes/?dir=hoice";
+    eldarica.url = "github:/KenSakayori/flakes/?dir=eldarica";
     ppx-cmdliner = {
       url = "github:hammerlab/ppx_deriving_cmdliner";
       flake = false;
@@ -16,7 +17,17 @@
 
   };
 
-  outputs = { self, flake-utils, opam-nix, nixpkgs, hoice, ppx-cmdliner, rethfl }@inputs:
+  outputs =
+    {
+      self,
+      flake-utils,
+      opam-nix,
+      nixpkgs,
+      hoice,
+      eldarica,
+      ppx-cmdliner,
+      rethfl
+    }@inputs:
     # Don't forget to put the package name instead of `throw':
     let package = "rethfl";
     in flake-utils.lib.eachDefaultSystem (system:
@@ -42,7 +53,12 @@
             buildInputs = [ pkgs.makeWrapper ];
             postFixup = ''
                       wrapProgram $out/bin/rethfl \
-                      --set PATH ${pkgs.lib.makeBinPath [ pkgs.z3_4_8 hoice.packages.${system}.default ]}
+                      --set PATH ${pkgs.lib.makeBinPath
+                        [
+                          pkgs.z3_4_8
+                          hoice.packages.${system}.default
+                          eldarica.packages.${system}.default
+                        ]}
                       '';
             });
           };
