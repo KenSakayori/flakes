@@ -33,15 +33,20 @@
               # > strictly from the project files. The proposed solution is trust on first use
               # > (aka let a build fail the first time and use the hash that Nix prints).
               depsSha256 = "sha256-LxoZZ+3oKA2/UinASJtHH5INLGeT9SkbwUI7+CEa+Z4=";
+              buildInputs = [ pkgs.makeWrapper ];
               buildPhase = ''
               sbt assembly
               '';
 
               # WARNING:I'm not entirely sure what needs to be copied for eldarica to work
+              # NOTE: Since eld itself is a bash script we wrap it with core-utils
+              # (In the future, we may write out what the shell script is doing to this flake)
               installPhase = ''
               mkdir -p $out/bin/target
               cp -r target/scala-2.* $out/bin/target
               cp eld eld-client eldEnv $out/bin
+              wrapProgram $out/bin/eld \
+              --set PATH ${pkgs.lib.makeBinPath [ pkgs.coreutils pkgs.jdk21 ]}
               '';
             };
         in
