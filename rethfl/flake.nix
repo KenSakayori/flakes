@@ -59,6 +59,9 @@
                           hoice.packages.${system}.default
                           eldarica.packages.${system}.default
                         ]}
+                      # Prevent unnecessary dependencies on the resulting derivation
+                      rm -rf $out/lib
+                      rm -rf $out/nix-support
                       '';
             });
           };
