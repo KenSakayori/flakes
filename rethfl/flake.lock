@@ -9,11 +9,11 @@
       },
       "locked": {
         "dir": "eldarica",
-        "lastModified": 1721717505,
-        "narHash": "sha256-EgTSG9bclOBNEK5SQf0oZYRCbchdZRptVlDs9fp6vxI=",
+        "lastModified": 1721727565,
+        "narHash": "sha256-2eNc2lY/cu1jobzWqCzmPHNl4fOQdMdGnOKX3qXfhJs=",
         "owner": "KenSakayori",
         "repo": "flakes",
-        "rev": "7b3449cd47969869933dd854c7364eb975b1589f",
+        "rev": "2e702a9e26f788f6f9e038b99eb9dec0ed70ed9c",
         "type": "github"
       },
       "original": {
@@ -158,11 +158,11 @@
       },
       "locked": {
         "dir": "hoice",
-        "lastModified": 1721717505,
-        "narHash": "sha256-EgTSG9bclOBNEK5SQf0oZYRCbchdZRptVlDs9fp6vxI=",
+        "lastModified": 1721727565,
+        "narHash": "sha256-2eNc2lY/cu1jobzWqCzmPHNl4fOQdMdGnOKX3qXfhJs=",
         "owner": "KenSakayori",
         "repo": "flakes",
-        "rev": "7b3449cd47969869933dd854c7364eb975b1589f",
+        "rev": "2e702a9e26f788f6f9e038b99eb9dec0ed70ed9c",
         "type": "github"
       },
       "original": {
