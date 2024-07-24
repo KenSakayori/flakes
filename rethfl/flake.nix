@@ -50,7 +50,7 @@
         overlay = final: prev:
           {
             rethfl = prev.rethfl.overrideAttrs (_: {
-            buildInputs = [ pkgs.makeWrapper ];
+            buildInputs = prev.rethfl.buildInputs ++ [ pkgs.makeWrapper ];
             postFixup = ''
                       wrapProgram $out/bin/rethfl \
                       --set PATH ${pkgs.lib.makeBinPath
