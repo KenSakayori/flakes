@@ -32,7 +32,7 @@
               # > It's also far from trivial to calculate this hash programmatically,
               # > strictly from the project files. The proposed solution is trust on first use
               # > (aka let a build fail the first time and use the hash that Nix prints).
-              depsSha256 = "sha256-/zM7s1txEc0eM9RMisLTP+Qm8X5cdOgOI9X9G0oln4E=";
+              depsSha256 = "sha256-lRGO0AWPzQtU5Gg7wGjuHLNc8zKCMWV/rUMs7KqoThc=";
               buildInputs = [ pkgs.makeWrapper ];
               buildPhase = ''
               sbt assembly
